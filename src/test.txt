@@ -1,0 +1,25 @@
+<li>
+						<h2>Adjective</h2>
+						<div className='meaning-details'>
+							<p className='definition'>
+								the place to which someone or something is going
+								or being sent.
+							</p>
+							<p className='example'>
+								Delft is an ideal destination for a relaxing
+								weekend
+							</p>
+						</div>
+
+						<ul className='synonyms'>
+							<li>
+								<a href='#'>station</a>
+							</li>
+						</ul>
+
+						<ul className='antonyms'>
+							<li>
+								<a href='#'>purpose</a>
+							</li>
+						</ul>
+					</li>
