@@ -79,7 +79,6 @@ label {
 	background: var(--text-clr);
 	padding: 3rem;
 	color: #fff;
-	min-height: 60vh;
 }
 
 .title {
