@@ -11,6 +11,7 @@ const Dictionary = () => {
 	const [searchQuery, setSearchQuery] = useState('dictionary')
 	const [words, setWords] = useState([])
 	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState(null)
 	const audioRef = useRef()
 
 	const fetchData = async () => {
@@ -18,12 +19,18 @@ const Dictionary = () => {
 			const response = await fetch(
 				`https://api.dictionaryapi.dev/api/v2/entries/en_US/${searchQuery}`
 			)
+
+			if (!response.ok) {
+				throw Error(
+					"Sorry pal, we couldn't find definitions for the word you were looking for."
+				)
+			}
 			const word = await response.json()
 
 			setWords(word)
 			setLoading(false)
 		} catch (error) {
-			console.log(error)
+			setError(error.message)
 		}
 	}
 
@@ -40,6 +47,20 @@ const Dictionary = () => {
 	useEffect(() => {
 		fetchData()
 	}, [])
+
+	// display error message if an error is encounted
+	if (error) {
+		return (
+			<>
+				<div>{error}</div>
+				<button
+					className='error'
+					onClick={() => window.location.reload()}>
+					Refresh Page
+				</button>
+			</>
+		)
+	}
 
 	if (loading) {
 		return <Loading />
@@ -154,7 +175,10 @@ const Dictionary = () => {
 					</a>
 				</p>
 
-				<a href='#' target='_blank' className='github-link'>
+				<a
+					href='https://github.com/williamssam/wordsearch'
+					target='_blank'
+					className='github-link'>
 					<IoLogoGithub />
 				</a>
 			</footer>

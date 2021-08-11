@@ -338,3 +338,14 @@ footer {
 		margin-top: 0;
 	}
 }
+
+.error {
+	background: #000;
+	color: #fff;
+	padding: 0.5rem 3rem;
+	margin: 1rem 0;
+}
+
+.error:active {
+	transform: scale(0.98);
+}
